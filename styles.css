@@ -1,11 +1,11 @@
 :root {
-  --background: #f7f5f0;
+  --background: #f1f1f1;
   --surface: #ffffff;
   --ink: #172033;
   --muted: #707783;
   --line: #d6d9de;
   --line-strong: #aeb5bf;
-  --pitch: #6d5b7a;
+  --pitch: #5d6eb0;
   --pitch-dark: #185869;
   --pitch-soft: #dceff2;
   --button-fill: #edf0f3;
@@ -47,6 +47,11 @@ button:disabled {
   padding: 32px 0 48px;
 }
 
+.page-frame.setup-view {
+  width: 100%;
+  padding: 0;
+}
+
 .setup-panel,
 .draw-panel {
   animation: rise-in 240ms ease;
@@ -54,21 +59,20 @@ button:disabled {
 
 .setup-panel {
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
+  grid-template-columns: minmax(340px, 44vw) minmax(320px, 520px);
   gap: 36px;
   align-items: stretch;
-  min-height: calc(100vh - 80px);
+  min-height: 100vh;
+  padding-right: max(16px, calc((100vw - 1180px) / 2));
 }
 
 .panel-copy {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 44px;
+  padding: 44px 44px 44px clamp(44px, 7vw, 120px);
   background: #102236;
   color: #ffffff;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
 }
 
 .eyebrow {
@@ -89,6 +93,12 @@ h1 {
   font-size: clamp(2.4rem, 5vw, 5.4rem);
   line-height: 0.95;
   letter-spacing: 0;
+}
+
+.panel-copy h1 {
+  max-width: 100%;
+  font-size: clamp(3rem, 4.6vw, 5rem);
+  overflow-wrap: break-word;
 }
 
 .intro {
@@ -224,36 +234,6 @@ button:focus-visible {
 
 .draw-header h1 {
   font-size: clamp(2.25rem, 4vw, 4.6rem);
-}
-
-.status-bar {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1px;
-  overflow: hidden;
-  margin-bottom: 18px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--line);
-}
-
-.status-bar > div {
-  min-width: 0;
-  padding: 16px 18px;
-  background: var(--surface);
-}
-
-.status-bar span {
-  display: block;
-  overflow-wrap: anywhere;
-  font-size: 1.45rem;
-  font-weight: 800;
-}
-
-.status-bar small {
-  display: block;
-  margin-top: 4px;
-  color: var(--muted);
 }
 
 .people-strip {
@@ -398,9 +378,14 @@ button:focus-visible {
   .setup-panel {
     grid-template-columns: 1fr;
     min-height: auto;
+    padding: 0 12px 32px;
   }
 
-  .panel-copy,
+  .panel-copy {
+    margin: 0 -12px;
+    padding: 28px 22px;
+  }
+
   .names-form {
     padding: 22px;
   }
@@ -422,10 +407,6 @@ button:focus-visible {
   .draw-actions .secondary-button,
   .draw-actions .download-button {
     flex: 1 1 0;
-  }
-
-  .status-bar {
-    grid-template-columns: 1fr;
   }
 
   .teams-grid {

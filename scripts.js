@@ -71,13 +71,12 @@ const teams = [
 const namesForm = document.querySelector("#namesForm");
 const namesInput = document.querySelector("#namesInput");
 const nameCount = document.querySelector("#nameCount");
+const pageFrame = document.querySelector("#pageFrame");
 const setupPanel = document.querySelector("#setupPanel");
 const drawPanel = document.querySelector("#drawPanel");
 const teamsGrid = document.querySelector("#teamsGrid");
 const teamCardTemplate = document.querySelector("#teamCardTemplate");
 const peopleStrip = document.querySelector("#peopleStrip");
-const assignedTotal = document.querySelector("#assignedTotal");
-const remainingTotal = document.querySelector("#remainingTotal");
 const backButton = document.querySelector("#backButton");
 const resetButton = document.querySelector("#resetButton");
 const downloadButton = document.querySelector("#downloadButton");
@@ -144,11 +143,13 @@ function updateNameCount() {
 }
 
 function showDraw() {
+  pageFrame.classList.remove("setup-view");
   setupPanel.classList.add("is-hidden");
   drawPanel.classList.remove("is-hidden");
 }
 
 function showSetup() {
+  pageFrame.classList.add("setup-view");
   drawPanel.classList.add("is-hidden");
   setupPanel.classList.remove("is-hidden");
   namesInput.focus();
@@ -168,8 +169,6 @@ function renderPeopleStrip() {
 function renderStatus() {
   const assignedCount = revealedCountries.size;
 
-  assignedTotal.textContent = assignedCount;
-  remainingTotal.textContent = teams.length - assignedCount;
   downloadButton.classList.toggle("is-hidden", assignedCount !== teams.length);
 }
 
