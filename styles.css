@@ -228,7 +228,7 @@ button:focus-visible {
 
 .status-bar {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1px;
   overflow: hidden;
   margin-bottom: 18px;
@@ -333,14 +333,12 @@ button:focus-visible {
   align-self: end;
   width: 100%;
   margin: 8px 0 0;
-  overflow: hidden;
   font-size: 2rem;
   font-weight: 500;
   line-height: 1.05;
   letter-spacing: 0;
   color: #ffffff;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
 }
 
 .team-card h2.is-long-name {

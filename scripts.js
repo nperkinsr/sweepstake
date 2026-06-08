@@ -78,7 +78,6 @@ const teamCardTemplate = document.querySelector("#teamCardTemplate");
 const peopleStrip = document.querySelector("#peopleStrip");
 const assignedTotal = document.querySelector("#assignedTotal");
 const remainingTotal = document.querySelector("#remainingTotal");
-const fairnessText = document.querySelector("#fairnessText");
 const backButton = document.querySelector("#backButton");
 const resetButton = document.querySelector("#resetButton");
 const downloadButton = document.querySelector("#downloadButton");
@@ -102,12 +101,6 @@ function countAssignments(personId) {
   return teams.filter(
     (team) =>
       revealedCountries.has(team.name) && assignments[team.name] === personId,
-  ).length;
-}
-
-function countDrawAssignments(personId) {
-  return Object.values(assignments).filter(
-    (assignedId) => assignedId === personId,
   ).length;
 }
 
@@ -174,14 +167,9 @@ function renderPeopleStrip() {
 
 function renderStatus() {
   const assignedCount = revealedCountries.size;
-  const counts = people.map((person) => countDrawAssignments(person.id));
-  const min = counts.length ? Math.min(...counts) : 0;
-  const max = counts.length ? Math.max(...counts) : 0;
 
   assignedTotal.textContent = assignedCount;
   remainingTotal.textContent = teams.length - assignedCount;
-  fairnessText.textContent =
-    max - min <= 1 ? "Balanced" : `${min}-${max} split`;
   downloadButton.classList.toggle("is-hidden", assignedCount !== teams.length);
 }
 
