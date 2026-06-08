@@ -188,7 +188,7 @@ function renderTeams() {
     card.querySelector(".team-group").textContent = team.group;
     const teamName = card.querySelector("h2");
     teamName.textContent = team.name;
-    teamName.classList.toggle("is-long-name", team.name.length > 15);
+    teamName.classList.toggle("is-long-name", team.name.length > 13);
     card.querySelector(".assigned-person").textContent = assignedPerson
       ? assignedPerson.name
       : "";
